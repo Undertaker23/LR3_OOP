@@ -60,11 +60,11 @@ int main() {
 	LinkedList<Point> linkedList;
 	Point* newObj;
 	PrintList(&linkedList);
-
+	cout << "_________________________________________________________________" << endl;
+	cout << "Добавление разнообразных объектов в хранилище" << endl << endl;
 
 	for (int i = 0; i < 10; i++)
 	{
-		cout << "_________________________________________________________________" << endl;
 		//узнаем тип объекта и добавляем его в список
 		int objType = rand() % 4 + 1;
 
@@ -106,11 +106,17 @@ int main() {
 			PrintList(&linkedList);
 			break;
 		}
-
-		code = rand() % 4 + 1;
+		cout << "*************************************************************************" << endl;
+	}
+	cout << "_________________________________________________________________" << endl;
+	cout << "Вызов случайных методов хранилища" << endl << endl;
+	for (int i = 0; i < linkedList.GetLength(); i++)
+	{
+		int code = rand() % 5 + 1;
 		switch (code)
 		{
 		case 1:
+			cout << "вызван метод хранилища Delete()" << endl;
 			cout << "Элемент " << linkedList.GetValue()->GetType() << " удален" << endl;
 			linkedList.Delete();
 			PrintList(&linkedList);
@@ -126,6 +132,7 @@ int main() {
 			PrintList(&linkedList);
 			break;
 		case 4:
+			cout << "вызван метод класса Move() у текущего объекта хранилища" << endl;
 			if (linkedList.GetLength() != 0)
 			{
 				cout << "координата x до сдвига: " << linkedList.GetCurrent()->GetValue()->GetX() << endl;
@@ -134,7 +141,13 @@ int main() {
 				cout << "координата x после сдвига: " << linkedList.GetCurrent()->GetValue()->GetX() << endl;
 			}
 			break;
+		case 5:
+			cout << "вызван метод хранилища MoveFirst();" << endl;
+			linkedList.MoveFirst();
+			PrintList(&linkedList);
+			break;
 		}
+
+		cout << "************************************************************************" << endl;
 	}
-	cout << "_________________________________________________________________" << endl;
 }
